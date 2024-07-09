@@ -1,0 +1,34 @@
+[package]
+name = "misc-target-testing"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m = { version = "0.7.0", features = ["critical-section-single-core"], optional = true }
+cortex-m-rt = { version = "0.7.0", optional = true }
+defmt = { version = "0.3.8", optional = true }
+defmt-rtt = { version = "0.4.0", optional = true }
+panic-probe = { version = "0.3.0", features = ["print-defmt"], optional = true }
+cortex-m-semihosting = { version = "0.5.0", optional = true }
+xmc4700 = { version = "0.12.0", features = ["rt"], optional = true }
+xmc4-hal = { version = "0.5.5", features = ["xmc4700"], optional = true }
+defmt-test = { version = "0.3.2", optional = true }
+
+[features]
+xmc-target = ["dep:cortex-m", "dep:cortex-m-rt", "dep:defmt", "dep:defmt-rtt", "dep:panic-probe", "dep:cortex-m-semihosting", "dep:xmc4700", "dep:xmc4-hal", "dep:defmt-test"]
+test = []
+target-unit-test-1 = ["xmc-target"]
+target-unit-test-2 = ["xmc-target"]
+
+[lib]
+harness = false
+
+[[test]]
+name = "test_1"
+path = "tests/target_tests/test_1.rs"
+harness = false
+
+[[test]]
+name = "test_2"
+path = "tests/target_tests/test_2.rs"
+harness = false
