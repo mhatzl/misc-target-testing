@@ -30,7 +30,7 @@ mod test {
     use defmt::assert_eq;
 
     #[test]
-    fn some_unit_test() {
+    fn lib_test_1() {
         let var = SomeStruct {
             field1: 1,
             field2: 2,
