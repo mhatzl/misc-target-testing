@@ -26,7 +26,7 @@ impl SomeStruct {
 mod test {
     use super::SomeStruct;
 
-    #[cfg(feature = "xmc-target")]
+    #[cfg(feature = "use-target")]
     use defmt::assert_eq;
 
     #[test]

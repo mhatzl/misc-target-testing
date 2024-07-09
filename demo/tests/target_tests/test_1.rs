@@ -1,16 +1,16 @@
-#![cfg_attr(feature = "xmc-target", no_main)]
-#![cfg_attr(feature = "xmc-target", no_std)]
+#![cfg_attr(feature = "use-target", no_main)]
+#![cfg_attr(feature = "use-target", no_std)]
 
 #[cfg(not(feature = "test"))]
 compile_error!("Feature 'test' must be enabled for 'test_1'.");
 
 use misc_target_testing as _;
 
-#[cfg_attr(feature = "xmc-target", defmt_test::tests)]
+#[cfg_attr(feature = "use-target", defmt_test::tests)]
 mod test {
     use misc_target_testing::unit_test_1::SomeStruct;
 
-    #[cfg(feature = "xmc-target")]
+    #[cfg(feature = "use-target")]
     use defmt::assert_eq;
 
     #[test]

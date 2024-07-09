@@ -1,9 +1,9 @@
-#![cfg_attr(feature = "xmc-target", no_main)]
-#![cfg_attr(feature = "xmc-target", no_std)]
+#![cfg_attr(feature = "use-target", no_main)]
+#![cfg_attr(feature = "use-target", no_std)]
 
 use misc_target_testing as _;
 
-#[cfg(feature = "xmc-target")]
+#[cfg(feature = "use-target")]
 #[cortex_m_rt::entry]
 fn main() -> ! {
     defmt::info!("Hello world!");
@@ -11,7 +11,7 @@ fn main() -> ! {
     misc_target_testing::exit()
 }
 
-#[cfg(not(feature = "xmc-target"))]
+#[cfg(not(feature = "use-target"))]
 fn main() {
     println!("Hello world!");
 }

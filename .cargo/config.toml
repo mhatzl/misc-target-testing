@@ -1,5 +1,6 @@
-[target.'cfg(all(target_arch = "arm", target_os = "none"))']
-runner = "embedded-runner run"
+[target.thumbv7m-none-eabi]
+#runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel"
+runner = "target/debug/runner.exe"
 
 rustflags = [
   "-C", "link-arg=-Tlink.x",
@@ -9,5 +10,5 @@ rustflags = [
   "-C", "link-arg=--nmagic",
 ]
 
-[build]
-target = "thumbv7em-none-eabihf"
+#[build]
+#target = "thumbv7m-none-eabi"
